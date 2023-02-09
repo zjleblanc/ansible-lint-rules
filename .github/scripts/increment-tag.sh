@@ -46,11 +46,11 @@ echo "Updating $VERSION to $NEW_TAG"
 
 #get current hash and see if it already has a tag
 GIT_COMMIT=`git rev-parse HEAD`
-NEEDS_TAG=`git describe --contains $GIT_COMMIT`
+git describe --contains $GIT_COMMIT > /dev/null
 
 #only tag if no tag already
-if [ -z "$NEEDS_TAG" ]; then
-    echo "Tagged with $NEW_TAG (Ignoring fatal:cannot describe - this means commit is untagged) "
+if [ $? -eq 1 ] ; then
+    echo "Tagged with $NEW_TAG"
     git tag $NEW_TAG
     git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" --tags
 else

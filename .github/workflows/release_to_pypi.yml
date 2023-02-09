@@ -23,10 +23,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: "set up python $env:PYTHON_VERSION"
+      - name: "set up python ${{ env.PYTHON_VERSION }}"
         uses: actions/setup-python@v4
         with:
-          python-version: "$env:PYTHON_VERSION"
+          python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
       - name: install python dependencies

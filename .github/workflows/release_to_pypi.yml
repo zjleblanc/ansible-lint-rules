@@ -11,7 +11,7 @@ on:
         required: true
 
 env:
-  PYTHON_VERSION: '3.11'
+  PYTHON_VERSION: '3.11.2'
 
 jobs:
   testing:

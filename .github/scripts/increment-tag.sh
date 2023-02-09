@@ -6,6 +6,11 @@ git config user.name "$GITHUB_ACTOR"
 #get highest tag number
 VERSION=`git describe --abbrev=0 --tags`
 
+if [ $? -eq 1 ] 
+then
+    exit $?
+fi
+
 #replace . with space so can split into an array
 VERSION_BITS=(${VERSION//./ })
 

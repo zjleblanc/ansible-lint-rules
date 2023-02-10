@@ -1,4 +1,4 @@
-name: Master - Test and Tag
+name: CI
 
 on:
   workflow_dispatch:

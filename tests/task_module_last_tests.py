@@ -11,21 +11,16 @@ def test_file_positive() -> None:
     """Positive test for task_module_last."""
     success = f'{test_playbooks_dir}/success.yml'
     good_runner = Runner(success, rules=collection)
-    print(success)
-    try:
-        assert [] == good_runner.run()
-    except Exception as e:
-        print(e)
-        assert False
+    results = good_runner.run()
+    for r in results:
+        print(r)
+    assert [] == results
 
 def test_file_negative() -> None:
     """Negative test for task_module_last."""
     fail = f'{test_playbooks_dir}/fail.yml'
     bad_runner = Runner(fail, rules=collection)
-    print(fail)
-    try:
-        errors = bad_runner.run()
-        assert 2 == len(errors)
-    except Exception as e:
-        print(e)
-        assert False
+    results = bad_runner.run()
+    for r in results:
+        print(r)
+    assert 2 == len(results)

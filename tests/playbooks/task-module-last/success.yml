@@ -1,10 +1,10 @@
 - hosts: all
   tasks:
-    - name: Example task with when condition
+    - name: Example task with module last
       when: true
       ansible.builtin.dnf:
 
-    - name: Example block without condition
+    - name: Example block with one task 
       block:
-        - name: Example task
+        - name: Example task with module last (in block)
           ansible.builtin.dnf:

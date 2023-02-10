@@ -33,6 +33,8 @@ jobs:
 
       - name: run pytest via tox[${{ matrix.tox-env }}]
         run: |
+          cat tests/playbooks/task-module-last/success.yml
+          cat tests/playbooks/task-module-last/fail.yml
           rm -rf .tox/${{ matrix.tox-env }}/.pytest_cache
           tox -e ${{ matrix.tox-env }}
 

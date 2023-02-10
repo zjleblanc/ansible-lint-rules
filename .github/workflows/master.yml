@@ -35,6 +35,7 @@ jobs:
         run: |
           cat tests/playbooks/task-module-last/success.yml
           cat tests/playbooks/task-module-last/fail.yml
+          rm -rf .ansible-lint
           rm -rf .tox/${{ matrix.tox-env }}/.pytest_cache
           tox -e ${{ matrix.tox-env }}
 

@@ -29,9 +29,10 @@ jobs:
       - name: install python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install tox pytest setuptools
+          pip install -r requirements.txt
+          pip install -r tests/requirements.txt
 
-      - name: run pytest via tox[${{ matrix.tox-env }}]
+      - name: run pytest
         run: |
           python -m pytest
 

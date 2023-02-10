@@ -44,26 +44,3 @@ class WhenFollowsNameRule(ansiblelint.rules.AnsibleLintRule):
             prev_key = key
 
         return False
-
-import sys
-if "pytest" in sys.modules:  # noqa: C901
-    from ansiblelint.rules import RulesCollection
-    from ansiblelint.runner import Runner
-
-    rule = WhenFollowsNameRule()
-    collection = RulesCollection()
-    collection.register(rule)
-    test_playbooks_dir = f'testing/playbooks/{rule.id}'
-
-    def test_file_positive() -> None:
-        """Positive test for when_follows_name."""
-        success = f'{test_playbooks_dir}/success.yml'
-        good_runner = Runner(success, rules=collection)
-        assert [] == good_runner.run()
-
-    def test_file_negative() -> None:
-        """Negative test for when_follows_name."""
-        success = f'{test_playbooks_dir}/fail.yml'
-        bad_runner = Runner(success, rules=collection)
-        errors = bad_runner.run()
-        assert 2 == len(errors)

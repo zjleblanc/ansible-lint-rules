@@ -1,3 +1,4 @@
+---
 - name: Test Task Module Last (Success)
   hosts: all
   tasks:

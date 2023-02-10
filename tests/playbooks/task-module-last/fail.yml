@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: Test Task Module Last (Fail)
+  hosts: all
   tasks:
     - name: Example task with module not last
       ansible.builtin.dnf:
@@ -10,4 +11,3 @@
         - name: Example task with module not last (in block)
           ansible.builtin.dnf:
       become: true
-          

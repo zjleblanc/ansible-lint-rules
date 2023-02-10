@@ -46,5 +46,5 @@ class TaskModuleLastRule(ansiblelint.rules.AnsibleLintRule):
         if module == BLOCK_CONSTRUCT:
             return handle_block_construct(last_key_short_name)
         if last_key_short_name != module:
-            return f'{{FQCN}}.{module} should be specified last'
+            return f'{module} should be specified last'
         return False

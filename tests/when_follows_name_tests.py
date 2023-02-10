@@ -18,4 +18,4 @@ def test_file_negative() -> None:
     success = f'{test_playbooks_dir}/fail.yml'
     bad_runner = Runner(success, rules=collection)
     errors = bad_runner.run()
-    assert 2 == len(errors)
+    assert 3 == len(errors)

@@ -11,3 +11,8 @@
         - name: Example task
           ansible.builtin.dnf:
       when: true
+
+    - name: Patch server
+      ansible.builtin.include_role:
+        name: patch
+      when: false

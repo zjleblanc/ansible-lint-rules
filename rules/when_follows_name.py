@@ -7,15 +7,6 @@ if typing.TYPE_CHECKING:
     from typing import Optional
     from ansiblelint.file_utils import Lintable
 
-_NAMELESS_TASKS: typing.FrozenSet[str] = frozenset("""
-meta
-debug
-import_role
-import_tasks
-include_role
-include_tasks
-""".split())
-
 class WhenFollowsNameRule(ansiblelint.rules.AnsibleLintRule):
     """
     Rule class to test if any tasks use when not following name
@@ -34,8 +25,6 @@ class WhenFollowsNameRule(ansiblelint.rules.AnsibleLintRule):
         """
         .. seealso:: ansiblelint.rules.AnsibleLintRule.matchtasks
         """
-        if task['action']['__ansible_module__'] in _NAMELESS_TASKS:
-            return False
         
         prev_key = None
         for key in task['__raw_task__']:

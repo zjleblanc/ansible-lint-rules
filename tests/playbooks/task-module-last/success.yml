@@ -4,9 +4,18 @@
   tasks:
     - name: Example task with module last
       when: true
-      ansible.builtin.dnf:
+      ansible.builtin.package:
+        name: vim
 
     - name: Example block with one task
       block:
         - name: Example task with module last (in block)
-          ansible.builtin.dnf:
+          ansible.builtin.package:
+            name: vim
+
+    - name: List updates
+      register: r_searched
+      ansible.windows.win_updates:
+        category_names: "{{ patch_categories }}"
+        accept_list: "{{ patch_kbs | default(omit) }}"
+        state: searched

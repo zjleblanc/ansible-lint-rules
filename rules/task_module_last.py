@@ -36,15 +36,17 @@ class TaskModuleLastRule(ansiblelint.rules.AnsibleLintRule):
         """
         last_key = None
         for key in reversed(task['__raw_task__'].keys()):
+            print(key)
             if not key.startswith('__'):
                 last_key = key
                 break
 
         last_key_short_name = last_key.split('.')[-1]
         module = task['action']['__ansible_module__']
-        
+        module_short_name = module.split('.')[-1]
+
         if module == BLOCK_CONSTRUCT:
             return handle_block_construct(last_key_short_name)
-        if last_key_short_name != module:
+        if last_key_short_name != module_short_name:
             return f'{module} should be specified last'
         return False

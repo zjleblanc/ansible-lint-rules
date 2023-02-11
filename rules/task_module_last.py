@@ -36,7 +36,6 @@ class TaskModuleLastRule(ansiblelint.rules.AnsibleLintRule):
         """
         last_key = None
         for key in reversed(task['__raw_task__'].keys()):
-            print(key)
             if not key.startswith('__'):
                 last_key = key
                 break
